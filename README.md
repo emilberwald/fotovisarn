@@ -1,0 +1,2 @@
+# fotovisarn
+Simple photo previewer
