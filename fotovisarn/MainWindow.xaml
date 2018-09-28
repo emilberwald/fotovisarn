@@ -1,0 +1,28 @@
+﻿<Window x:Class="fotovisarn.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:paz="clr-namespace:Wpf.Controls.PanAndZoom;assembly=Wpf.Controls.PanAndZoom"
+        xmlns:local="clr-namespace:fotovisarn"
+        mc:Ignorable="d"
+        Title="fotovisarn" 
+        Height="{x:Static SystemParameters.FullPrimaryScreenHeight}" 
+        Width="{x:Static SystemParameters.FullPrimaryScreenWidth}"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Arkiv">
+                <MenuItem Header="_Öppna" Click="MenuItem_Öppna_Click"/>
+                <MenuItem Header="_Avsluta" Click="MenuItem_Avsluta_Click"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <paz:ZoomBorder Name="mainImageView" ClipToBounds="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black">
+                <Image x:Name="mainImage"></Image>
+            </paz:ZoomBorder>
+        </Grid>
+    </DockPanel>
+</Window>
