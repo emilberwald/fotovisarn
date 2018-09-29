@@ -20,6 +20,19 @@
             </MenuItem>
         </Menu>
         <Grid>
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Kopiera...">
+                        <MenuItem Header="Fil">
+                            <MenuItem Header="sökväg" Click="KopieraFilsökväg_OnClick"/>
+                            <MenuItem Header="namn" Click="KopieraFilnamn_OnClick"/>
+                            <MenuItem Header="stam" Click="KopieraFilstam_OnClick"/>
+                            <MenuItem Header="suffix" Click="KopieraFilsuffix_OnClick"/>
+                        </MenuItem>
+                        <MenuItem Header="Bild" Click="KopieraBild_OnClick"/>
+                    </MenuItem>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <paz:ZoomBorder Name="mainImageView" ClipToBounds="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black">
                 <Image x:Name="mainImage"></Image>
             </paz:ZoomBorder>

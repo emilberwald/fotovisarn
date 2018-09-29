@@ -32,6 +32,61 @@ namespace fotovisarn
 				this.ChangeImage(new Uri(arg));
 			}
 		}
+		private void KopieraFilsökväg_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					Clipboard.SetText(uri.LocalPath);
+				}
+			}
+		}
+		private void KopieraFilnamn_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					Clipboard.SetText(System.IO.Path.GetFileName(uri.LocalPath));
+				}
+			}
+		}
+		private void KopieraFilstam_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					Clipboard.SetText(System.IO.Path.GetFileNameWithoutExtension(uri.LocalPath));
+				}
+			}
+		}
+		private void KopieraFilsuffix_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					Clipboard.SetText(System.IO.Path.GetExtension(uri.LocalPath));
+				}
+			}
+		}
+		private void KopieraBild_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					Clipboard.SetImage(this.mainImage.Source as BitmapSource);
+				}
+			}
+		}
 		/// <summary>
 		/// TODO: Find out if this can be done with dependency properties or bindings or whatnots
 		/// </summary>
