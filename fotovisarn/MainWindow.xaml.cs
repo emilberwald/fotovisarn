@@ -87,6 +87,17 @@ namespace fotovisarn
 				}
 			}
 		}
+		public ImageSource LoadImageFromFile(Uri uri)
+		{
+			BitmapImage image = new BitmapImage();
+			image.BeginInit();
+			image.CacheOption = BitmapCacheOption.OnLoad;
+			image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+			image.UriSource = uri;
+			image.EndInit();
+			image.Freeze();
+			return image;
+		}
 		/// <summary>
 		/// TODO: Find out if this can be done with dependency properties or bindings or whatnots
 		/// </summary>
@@ -95,7 +106,7 @@ namespace fotovisarn
 		{
 			if (uri.IsFile && MainWindow.allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)) && System.IO.File.Exists(uri.LocalPath))
 			{
-				this.mainImage.Source = new BitmapImage(uri);
+				this.mainImage.Source = this.LoadImageFromFile(uri);
 				this.Title = "fotovisarn visar " + uri.LocalPath;
 			}
 		}
@@ -122,10 +133,10 @@ namespace fotovisarn
 					Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
 					if (uri.IsFile)
 					{
-						var previousFile = System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(uri.LocalPath)).AsQueryable<string>().Where<string>(file => MainWindow.allowedExtensions.Contains<string>(System.IO.Path.GetExtension(file))).SkipWhile<string>(file => file != uri.LocalPath).Except<string>(new string[] { uri.LocalPath }).FirstOrDefault<string>();
-						if (!(previousFile is null))
+						var nextFile = System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(uri.LocalPath)).AsQueryable<string>().Where<string>(file => MainWindow.allowedExtensions.Contains<string>(System.IO.Path.GetExtension(file))).SkipWhile<string>(file => file != uri.LocalPath).Except<string>(new string[] { uri.LocalPath }).FirstOrDefault<string>();
+						if (!(nextFile is null))
 						{
-							this.ChangeImage(new Uri(previousFile));
+							this.ChangeImage(new Uri(nextFile));
 						}
 					}
 				}
