@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fotovisarn", "fotovisarn\fotovisarn.csproj", "{3231A7FD-6CF8-4FF8-9115-7E4D69EF91F2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{95081DFE-8C4C-40A8-B6DC-E46E1122C384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{3231A7FD-6CF8-4FF8-9115-7E4D69EF91F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3231A7FD-6CF8-4FF8-9115-7E4D69EF91F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3231A7FD-6CF8-4FF8-9115-7E4D69EF91F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95081DFE-8C4C-40A8-B6DC-E46E1122C384}.Debug|Any CPU.ActiveCfg = Debug
+		{95081DFE-8C4C-40A8-B6DC-E46E1122C384}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
