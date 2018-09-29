@@ -16,6 +16,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Arkiv">
                 <MenuItem Header="_Öppna" Click="MenuItem_Öppna_Click"/>
+                <MenuItem Header="_Spara som" Click="MenuItem_Spara_Click"/>
                 <MenuItem Header="_Avsluta" Click="MenuItem_Avsluta_Click"/>
             </MenuItem>
         </Menu>

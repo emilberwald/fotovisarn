@@ -170,6 +170,33 @@ namespace fotovisarn
 			System.Windows.Application.Current.MainWindow.Close();
 		}
 
+		private void MenuItem_Spara_Click(object sender, RoutedEventArgs e)
+		{
+			Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog();
+			if (!(this.mainImage.Source is null))
+			{
+				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
+				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
+				{
+					dialog.FileName = System.IO.Path.GetFileNameWithoutExtension(uri.LocalPath)+"["+this.mainImageView.OffsetX.ToString() + this.mainImageView.OffsetY.ToString() + this.mainImageView.ZoomX.ToString() + this.mainImageView.ZoomY.ToString()+"]";
+					dialog.DefaultExt = ".png";
+				}
+			}
+			dialog.Filter = "PNG (Portable Network Graphics)|*.png";
+			Nullable<bool> result = dialog.ShowDialog();
+			if (result.HasValue && result.Value)
+			{
+				RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(Convert.ToInt32(this.ActualWidth), Convert.ToInt32(this.ActualHeight), 96, 96, PixelFormats.Pbgra32);
+				renderTargetBitmap.Render(this.mainImageView);
+				PngBitmapEncoder pngImage = new PngBitmapEncoder();
+				pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+				using (System.IO.Stream fileStream = System.IO.File.Create(dialog.FileName))
+				{
+					pngImage.Save(fileStream);
+				}
+			}
+		}
+
 		//protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
 		//{
 		//	MessageBoxResult result = MessageBox.Show("Vill du avsluta?", "fotovisarn", MessageBoxButton.OKCancel, MessageBoxImage.Question);
