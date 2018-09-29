@@ -178,7 +178,7 @@ namespace fotovisarn
 				Uri uri = (this.mainImage.Source as BitmapImage).UriSource;
 				if (uri.IsFile && allowedExtensions.Contains(System.IO.Path.GetExtension(uri.LocalPath)))
 				{
-					dialog.FileName = System.IO.Path.GetFileNameWithoutExtension(uri.LocalPath)+"["+this.mainImageView.OffsetX.ToString() + this.mainImageView.OffsetY.ToString() + this.mainImageView.ZoomX.ToString() + this.mainImageView.ZoomY.ToString()+"]";
+					dialog.FileName = System.IO.Path.GetFileNameWithoutExtension(uri.LocalPath)+"["+this.mainImageView.OffsetX.ToString() +"," +this.mainImageView.OffsetY.ToString() +","+ this.mainImageView.ZoomX.ToString() + ","+this.mainImageView.ZoomY.ToString()+"]";
 					dialog.DefaultExt = ".png";
 				}
 			}
